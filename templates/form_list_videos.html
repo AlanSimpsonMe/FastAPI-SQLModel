@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="form-container">
+    <table class="list-rows">
+        <tr>
+            <th>Edit</th>
+            <th>Video Title</th>
+            <th>Category</th>
+            <th>YouTube Code</th>
+        </tr>
+        {% for video in videos %}
+        <tr>
+            <td>
+                <a href="{{request.base_url}}get_form_video_edit/{{video.id}}" title="Click to edit">
+                    <span class="fa fa-edit"></span>
+                </a>
+            </td>
+            <td>
+                {{video.title}}
+            </td>
+            <td>
+                {{video.category}}
+            </td>
+            <td>
+                <a href="https://youtu.be/{{video.youtube_code}}" target="_blank">
+                    {{video.youtube_code}}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

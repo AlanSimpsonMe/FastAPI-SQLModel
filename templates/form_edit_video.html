@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="form-container">
+    <form method="post">
+        <fieldset>
+            <legend>Edit a Video</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="title">Title:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="title" name="title" value="{{video.title}}" required maxlength="128"
+                            size="40">
+                    </td>
+                <tr>
+                    <td>
+                        <label for="youtube_code">YouTube Code:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="youtube_code" name="youtube_code" value="{{video.youtube_code}}"
+                            minlength="11" maxlength="11" size="9">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="category_id">Category:</label>
+                    </td>
+                    <td>
+                        <select id="category_id" name="category_id">
+                            {% for category in categories %}
+                            <option value="{{category.id}}" {% if category.id==video.category_id%}selected{% endif %}>
+                                {{category.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <!-- Trash icon for deleting the video -->
+                        <a class="fa fa-trash" onclick="show_confirm(true)" title="Delete video"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="reset" value="Cancel" onclick="history.back()">
+                        <input type="submit" value="Update">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</div>
+<div id="confirm-delete">
+    <span>Are you sure you want to delete <em>{{video.title}}?</em></span><br><br>
+    <button class="cancel" onclick="show_confirm(false)">No, Keep</button>
+    <button class="caution" onclick="delete_video('{{video.id}}')">Yes, Delete</button>
+</div>
+{% endblock %}

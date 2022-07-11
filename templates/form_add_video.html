@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="form-container">
+    <form method="post" action="submit_form_video_add">
+        <fieldset>
+            <legend>Add a Video</legend>
+        <table>
+            <tr>
+                <td>
+                    <label for="title">Title:</label>
+                </td>
+                <td>
+                    <input type="text" id="title" name="title" required maxlength="128" size="40">
+                </td>
+            <tr>
+                <td>
+                    <label for="youtube_code">YouTube Code:</label>
+                </td>
+                <td>
+                    <input type="text" id="youtube_code" name="youtube_code" minlength="11" maxlength="11" size="9">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="category_id">Category:</label>
+                </td>
+                <td>
+                    <select id="category_id" name="category_id">
+                    {% for category in categories %}
+                        <option value="{{category.id}}">{{category.name}}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="reset" value="Cancel" onclick="history.back()">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    </form>
+</div>
+{% endblock %}
