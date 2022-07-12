@@ -3,13 +3,13 @@ Make sure you're using Python 3.6 or later. In Windows you might need to execute
 Windows
 -------
 
-`py -m venv venv
-venv\scripts\activate
+`py -m venv venv  
+venv\scripts\activate  
 pip install -r requirements.txt`
 
 Mac
 ---
 
-`python3 -m venv venv
-source venv/bin/activate
+`python3 -m venv venv  
+source venv/bin/activate  
 pip install -r requirements.txt`
